@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>One Last Message</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 10% 10%,
+          #ffd8e8,
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 90% 85%,
+          #d7d0ff,
+          transparent 43%
+        ),
+        linear-gradient(
+          145deg,
+          #fff9fc,
+          #f4f0ff
+        );
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 20px;
+
+      overflow-x: hidden;
+    }
+
+    /* =========================================
+       FLOATING MAGICAL ELEMENTS
+    ========================================= */
+
+    .floating-world {
+      position: fixed;
+      inset: 0;
+
+      overflow: hidden;
+      pointer-events: none;
+
+      z-index: 1;
+    }
+
+    .floating-item {
+      position: absolute;
+
+      opacity: 0.85;
+
+      filter:
+        drop-shadow(
+          0 8px 12px
+          rgba(91, 67, 127, 0.24)
+        );
+
+      animation:
+        floating 6s ease-in-out infinite;
+    }
+
+    .moon {
+      top: 4%;
+      right: 5%;
+
+      font-size: 62px;
+    }
+
+    .butterfly {
+      top: 18%;
+      left: 4%;
+
+      font-size: 52px;
+      animation-delay: 1s;
+    }
+
+    .flower {
+      bottom: 8%;
+      left: 4%;
+
+      font-size: 55px;
+      animation-delay: 2s;
+    }
+
+    .star {
+      bottom: 7%;
+      right: 5%;
+
+      font-size: 54px;
+      animation-delay: 3s;
+    }
+
+    .small-star {
+      top: 48%;
+      left: 3%;
+
+      font-size: 42px;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes floating {
+      0%,
+      100% {
+        transform:
+          translateY(0)
+          rotate(0deg);
+      }
+
+      50% {
+        transform:
+          translateY(-22px)
+          rotate(8deg);
+      }
+    }
+
+    /* =========================================
+       MAIN PAGE CARD
+    ========================================= */
+
+    .page-container {
+      width: 100%;
+      max-width: 470px;
+
+      position: relative;
+      z-index: 3;
+    }
+
+    .message-card {
+      width: 100%;
+
+      padding: 28px 22px;
+
+      border-radius: 31px;
+
+      background:
+        rgba(255, 255, 255, 0.91);
+
+      backdrop-filter:
+        blur(17px);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.96);
+
+      box-shadow:
+        0 22px 58px
+        rgba(95, 70, 130, 0.19);
+
+      text-align: center;
+
+      animation:
+        cardAppear 0.7s ease;
+    }
+
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(20px)
+          scale(0.97);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0)
+          scale(1);
+      }
+    }
+
+    .badge {
+      display: inline-block;
+
+      margin-bottom: 15px;
+      padding: 8px 15px;
+
+      border-radius: 50px;
+
+      background: #f2e8ff;
+      color: #755291;
+
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+    }
+
+    .main-icon {
+      width: 98px;
+      height: 98px;
+
+      margin: 0 auto 16px;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffcce0,
+          #d1c7ff
+        );
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 47px;
+
+      box-shadow:
+        0 13px 30px
+        rgba(166, 125, 199, 0.28);
+    }
+
+    h1 {
+      color: #3f314d;
+
+      font-size: 29px;
+      margin-bottom: 9px;
+    }
+
+    .subtitle {
+      color: #81758b;
+
+      font-size: 14px;
+      line-height: 1.65;
+
+      margin-bottom: 23px;
+    }
+
+    /* =========================================
+       LETTER
+    ========================================= */
+
+    .letter {
+      padding: 22px 19px;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #fff4f9,
+          #f3edff
+        );
+
+      border:
+        1px solid #e8d8f0;
+
+      text-align: left;
+
+      margin-bottom: 18px;
+    }
+
+    .letter p {
+      color: #62526c;
+
+      font-size: 15px;
+      line-height: 1.8;
+
+      margin-bottom: 15px;
+    }
+
+    .letter p:last-child {
+      margin-bottom: 0;
+    }
+
+    .opening {
+      color: #674b78 !important;
+
+      font-size: 18px !important;
+      font-weight: bold;
+    }
+
+    .signature {
+      margin-top: 21px !important;
+
+      color: #715782 !important;
+
+      font-weight: bold;
+      text-align: right;
+    }
+
+    /* =========================================
+       CREATOR REVEAL
+    ========================================= */
+
+    .creator-box {
+      padding: 18px;
+
+      border-radius: 20px;
+
+      background:
+        rgba(255, 255, 255, 0.75);
+
+      border:
+        1px solid #e4d4ec;
+
+      margin-bottom: 17px;
+    }
+
+    .creator-label {
+      display: block;
+
+      color: #9a7fa7;
+
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 0.9px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 7px;
+    }
+
+    .creator-name {
+      color: #654879;
+
+      font-size: 20px;
+      font-weight: bold;
+
+      margin-bottom: 7px;
+    }
+
+    .creator-note {
+      color: #7a6a84;
+
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       FINAL VERIFICATION
+    ========================================= */
+
+    .verification-box {
+      padding: 19px;
+
+      border-radius: 21px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffeaf4,
+          #eee9ff
+        );
+
+      border:
+        1px solid #e2cfeb;
+
+      margin-bottom: 16px;
+    }
+
+    .verification-label {
+      color: #967ba2;
+
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 0.9px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 7px;
+    }
+
+    .verification-result {
+      color: #68447b;
+
+      font-size: 22px;
+      font-weight: bold;
+
+      margin-bottom: 7px;
+    }
+
+    .verification-subtext {
+      color: #7c6b86;
+
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       BUTTONS
+    ========================================= */
+
+    .button-area {
+      display: grid;
+      gap: 11px;
+    }
+
+    .main-button {
+      width: 100%;
+
+      padding: 17px;
+
+      border: none;
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #c478d5,
+          #8479da
+        );
+
+      color: white;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 11px 24px
+        rgba(127, 103, 186, 0.28);
+
+      transition: 0.25s;
+    }
+
+    .main-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .secondary-button {
+      width: 100%;
+
+      padding: 15px;
+
+      border-radius: 17px;
+
+      border:
+        1px solid #dcc8e8;
+
+      background:
+        rgba(255, 255, 255, 0.83);
+
+      color: #6b527c;
+
+      font-size: 14px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition: 0.25s;
+    }
+
+    .secondary-button:hover {
+      transform: translateY(-2px);
+
+      background: #fff7fc;
+    }
+
+    /* =========================================
+       POPUP
+    ========================================= */
+
+    .popup {
+      position: fixed;
+
+      left: 50%;
+      bottom: 24px;
+
+      transform:
+        translateX(-50%)
+        translateY(35px);
+
+      width: calc(100% - 38px);
+      max-width: 400px;
+
+      padding: 16px 18px;
+
+      border-radius: 18px;
+
+      background:
+        rgba(66, 47, 81, 0.96);
+
+      color: white;
+
+      font-size: 13px;
+      line-height: 1.55;
+      text-align: center;
+
+      opacity: 0;
+      pointer-events: none;
+
+      z-index: 40;
+
+      transition: 0.35s;
+    }
+
+    .popup.show {
+      opacity: 1;
+
+      transform:
+        translateX(-50%)
+        translateY(0);
+    }
+
+    /* =========================================
+       SPARKLES
+    ========================================= */
+
+    .sparkle {
+      position: fixed;
+
+      z-index: 50;
+      pointer-events: none;
+
+      animation:
+        sparkleAnimation
+        1.5s ease forwards;
+    }
+
+    @keyframes sparkleAnimation {
+      0% {
+        opacity: 0;
+
+        transform:
+          scale(0.3)
+          translateY(0);
+      }
+
+      35% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+
+        transform:
+          scale(1.8)
+          translateY(-100px);
+      }
+    }
+
+    .footer {
+      margin-top: 18px;
+
+      color: #a398a8;
+
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 390px) {
+      body {
+        padding: 14px;
+      }
+
+      .message-card {
+        padding: 24px 16px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .letter {
+        padding: 19px 15px;
+      }
+
+      .moon,
+      .butterfly,
+      .flower,
+      .star {
+        font-size: 44px;
+      }
+
+      .small-star {
+        font-size: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="floating-world">
+    <span class="floating-item moon">🌙</span>
+    <span class="floating-item butterfly">🦋</span>
+    <span class="floating-item flower">🌸</span>
+    <span class="floating-item star">⭐</span>
+    <span class="floating-item small-star">✨</span>
+  </div>
+
+  <main class="page-container">
+
+    <section class="message-card">
+
+      <div class="badge">
+        Final Angel Department Record
+      </div>
+
+      <div class="main-icon">
+        🌷
+      </div>
+
+      <h1>
+        One Last Message
+      </h1>
+
+      <p class="subtitle">
+        The memory archive is complete.<br>
+        But there was one final record waiting for you.
+      </p>
+
+      <div class="letter">
+
+        <p class="opening">
+          Hi, Clara.
+        </p>
+
+        <p>
+          I know I cannot solve every difficult thought,
+          every tiring night or everything you quietly
+          carry inside.
+        </p>
+
+        <p>
+          I only wanted to create one small place where
+          you could smile, relax for a moment and remember
+          that you are appreciated.
+        </p>
+
+        <p>
+          You deserve peaceful nights, lighter mornings,
+          beautiful dances, proud moments and people who
+          treat your heart gently.
+        </p>
+
+        <p>
+          You do not always have to explain everything.
+          You do not have to reply to this in any special
+          way either. Just take this website as a little
+          reminder that somebody is cheering for you.
+        </p>
+
+        <p>
+        I honestly don't know whether you laughed at every page, smiled at one
+        of them, or simply looked at your phone thinking,
+        "Indha loosu enna pannuthu...?🤣😹💕"
+    </p>
+
+    <p>
+        But if this little website managed to make you smile, even for a few
+        seconds, then I'd say it did exactly what I wanted it to do.
+    </p>
+
+    <p>
+        Going through all these photos while making this reminded me how many
+        ordinary moments quietly become unforgettable memories. Looking back at
+        them made me smile more than I expected.
+    </p>
+
+    <p>
+        I wanted to make you something that couldn't be bought from a shop.
+        Something made patiently, page by page, just for you.
+    </p>
+<p>
+        More than anything, I hope life gives you everything you've been
+        working so hard for. I hope every practice, every rehearsal, every drop
+        of effort you put into Bharatanatyam someday stands under bright stage
+        lights, with people applauding not just the performance, but the years
+        of dedication behind it. I hope you keep dancing the way only you can,
+        and that one day your art reaches every place you've dreamed of.
+    </p>
+<p>
+        I also hope there are countless new memories waiting for you—new
+        performances, new achievements, new places, new people to inspire, and
+        another hundred photos that deserve to be added after these twenty.
+    </p>
+
+    <p>
+        So... whenever you open this website again, maybe months or even years
+        from now, I hope it reminds you that someone once spent a lot of time
+        making something simply because he wanted to see you smile.
+    </p>
+
+    <p style="
+        text-align:center;
+        font-size:20px;
+        font-weight:bold;
+        color:#6b4780;
+        margin:18px 0;
+    ">
+        The Angel Department reviewed all the evidence...
+        <br><br>
+        ...and reached the same conclusion every single time.
+        <br><br>
+        You are definitely an angel. 😇🌸
+    </p>
+
+    <p>
+        Thank you for every conversation, every laugh, every dance, every reel,
+        every memory, and for simply being the person you are.
+    </p>
+<p>
+  Thank you for being my bestfriend...
+</p>
+
+    <p class="signature">
+        With lots of care,<br>
+        Founder of the Angel Department,<br>
+        Krithik 🌙
+    </p>
+
+      </div>
+
+      <div class="creator-box">
+
+        <span class="creator-label">
+          Website Creator Revealed
+        </span>
+
+        <div class="creator-name">
+          Krithik ✨
+        </div>
+
+        <p class="creator-note">
+          Mission: Create one tiny corner of the internet
+          that could make Clara smile.
+        </p>
+
+      </div>
+
+      <div class="verification-box">
+
+        <div class="verification-label">
+          Final Verification Status
+        </div>
+
+        <div class="verification-result">
+          Definitely an Angel 😇
+        </div>
+
+        <p class="verification-subtext">
+          Approved by flowers, butterflies, stars,
+          the moon and one very determined cheerleader.
+        </p>
+
+      </div>
+
+      <div class="button-area">
+
+        <button
+          class="main-button"
+          type="button"
+          id="smileButton"
+        >
+          Tap Here for One Final Surprise ✨
+        </button>
+
+        <button
+          class="secondary-button"
+          type="button"
+          onclick="restartJourney()"
+        >
+          Restart the Angel Journey ↺
+        </button>
+
+      </div>
+
+      <p class="footer">
+        No reply required. One smile is enough.
+      </p>
+
+    </section>
+
+  </main>
+
+  <div
+    class="popup"
+    id="popup"
+  ></div>
+
+  <script>
+    const smileButton =
+      document.getElementById("smileButton");
+
+    const popup =
+      document.getElementById("popup");
+
+    let popupTimer;
+
+    smileButton.addEventListener("click", () => {
+      showPopup(
+        "The Angel Department has one final announcement: " +
+        "the moon loves you, the butterflies trust you, " +
+        "the flowers admire you, and your cheerleader is proud of you. 🌙🦋🌸"
+      );
+
+      createSparkles(35);
+
+      smileButton.textContent =
+        "Surprise Delivered Successfully 😇";
+    });
+
+    function showPopup(message) {
+      popup.textContent = message;
+
+      popup.classList.add("show");
+
+      clearTimeout(popupTimer);
+
+      popupTimer = setTimeout(() => {
+        popup.classList.remove("show");
+      }, 5500);
+    }
+
+    function restartJourney() {
+      window.location.href =
+        "index.html";
+    }
+
+    function createSparkles(amount) {
+      const symbols = [
+        "✨",
+        "⭐",
+        "🌸",
+        "🦋",
+        "💫",
+        "🌙",
+        "🌷"
+      ];
+
+      for (
+        let i = 0;
+        i < amount;
+        i++
+      ) {
+        const sparkle =
+          document.createElement("span");
+
+        sparkle.className =
+          "sparkle";
+
+        sparkle.textContent =
+          symbols[
+            Math.floor(
+              Math.random() *
+              symbols.length
+            )
+          ];
+
+        sparkle.style.left =
+          Math.random() * 100 + "vw";
+
+        sparkle.style.top =
+          25 +
+          Math.random() * 65 +
+          "vh";
+
+        sparkle.style.fontSize =
+          16 +
+          Math.random() * 24 +
+          "px";
+
+        document.body.appendChild(
+          sparkle
+        );
+
+        setTimeout(() => {
+          sparkle.remove();
+        }, 1550);
+      }
+    }
+
+    setTimeout(() => {
+      createSparkles(12);
+    }, 650);
+  </script>
+
+</body>
+</html>

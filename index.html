@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Profile Verification</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+
+      background:
+        radial-gradient(circle at top left, #ffd9e9, transparent 40%),
+        radial-gradient(circle at bottom right, #dcd4ff, transparent 45%),
+        linear-gradient(135deg, #fff9fc, #f5f1ff);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .background-decoration {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .background-decoration span {
+      position: absolute;
+      opacity: 0.3;
+      font-size: 25px;
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .background-decoration span:nth-child(1) {
+      left: 7%;
+      top: 12%;
+    }
+
+    .background-decoration span:nth-child(2) {
+      right: 9%;
+      top: 18%;
+      animation-delay: 1s;
+    }
+
+    .background-decoration span:nth-child(3) {
+      left: 12%;
+      bottom: 15%;
+      animation-delay: 2s;
+    }
+
+    .background-decoration span:nth-child(4) {
+      right: 8%;
+      bottom: 12%;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-18px) rotate(8deg);
+      }
+    }
+
+    .card {
+      width: 100%;
+      max-width: 430px;
+
+      padding: 28px 22px;
+
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(16px);
+
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 30px;
+
+      box-shadow:
+        0 20px 50px rgba(100, 70, 130, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+      position: relative;
+      z-index: 2;
+
+      animation: cardAppear 0.7s ease;
+    }
+
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .badge {
+      width: fit-content;
+
+      margin: 0 auto 18px;
+      padding: 8px 14px;
+
+      border-radius: 50px;
+
+      background: #f2e9ff;
+      color: #755294;
+
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .avatar {
+      width: 94px;
+      height: 94px;
+
+      margin: 0 auto 16px;
+
+      border-radius: 50%;
+
+      background: linear-gradient(135deg, #ffcce1, #cec5ff);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 43px;
+
+      box-shadow: 0 12px 28px rgba(170, 130, 200, 0.28);
+
+      transition: 0.4s;
+    }
+
+    h1 {
+      text-align: center;
+      color: #392d47;
+
+      font-size: 27px;
+      margin-bottom: 9px;
+    }
+
+    .subtitle {
+      text-align: center;
+
+      color: #81748c;
+      font-size: 14px;
+      line-height: 1.6;
+
+      margin-bottom: 26px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .label {
+      display: block;
+
+      margin-bottom: 10px;
+
+      color: #51445e;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .text-input {
+      width: 100%;
+
+      padding: 15px 16px;
+
+      border: 1px solid #eadff1;
+      border-radius: 16px;
+
+      background: #fffafd;
+      color: #40364a;
+
+      font-size: 16px;
+      outline: none;
+
+      transition: 0.25s;
+    }
+
+    .text-input:focus {
+      border-color: #c99ce3;
+      box-shadow: 0 0 0 4px rgba(199, 156, 227, 0.15);
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .option-button {
+      min-height: 78px;
+
+      padding: 12px 7px;
+
+      border: 1px solid #eadff1;
+      border-radius: 16px;
+
+      background: #fffafd;
+      color: #665674;
+
+      font-size: 13px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      gap: 7px;
+
+      transition: 0.25s;
+    }
+
+    .option-button span {
+      font-size: 24px;
+    }
+
+    .option-button:hover {
+      transform: translateY(-3px);
+      border-color: #d5afe9;
+    }
+
+    .option-button.selected {
+      background: linear-gradient(135deg, #f7dcff, #e8e1ff);
+
+      border-color: #c98be9;
+      color: #6b4082;
+
+      box-shadow: 0 8px 20px rgba(174, 126, 203, 0.18);
+    }
+
+    .main-button,
+    .answer-button {
+      width: 100%;
+
+      border: none;
+      border-radius: 18px;
+
+      padding: 16px;
+
+      background: linear-gradient(135deg, #bd7cda, #8c7bdb);
+      color: white;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      box-shadow: 0 12px 25px rgba(142, 111, 194, 0.28);
+
+      transition: 0.25s;
+    }
+
+    .main-button:hover,
+    .answer-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .main-button:active,
+    .answer-button:active {
+      transform: scale(0.98);
+    }
+
+    .question-box {
+      display: none;
+
+      margin-top: 20px;
+      padding: 20px;
+
+      border-radius: 20px;
+
+      background: linear-gradient(135deg, #fff0f7, #f0eaff);
+      border: 1px solid #ead8f4;
+
+      text-align: center;
+
+      animation: appear 0.45s ease;
+    }
+
+    .question-box h2 {
+      color: #65427e;
+
+      font-size: 20px;
+      line-height: 1.4;
+
+      margin-bottom: 9px;
+    }
+
+    .question-box p {
+      color: #7e6e88;
+
+      font-size: 14px;
+      line-height: 1.6;
+
+      margin-bottom: 18px;
+    }
+
+    .answer-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .answer-button.secondary {
+      background: #fffafd;
+      color: #755685;
+
+      border: 1px solid #dec7eb;
+      box-shadow: none;
+    }
+
+    .final-button {
+      display: none;
+
+      margin-top: 14px;
+
+      background: linear-gradient(135deg, #d26eb4, #8f79de);
+    }
+
+    .progress-container {
+      display: none;
+
+      margin-top: 18px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 7px;
+
+      color: #95869f;
+      font-size: 11px;
+    }
+
+    .progress-track {
+      height: 8px;
+
+      background: #eee5f3;
+      border-radius: 20px;
+
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+
+      border-radius: 20px;
+
+      background: linear-gradient(90deg, #de8fca, #9882e1);
+
+      transition: width 0.5s ease;
+    }
+
+    .footer {
+      margin-top: 18px;
+
+      text-align: center;
+
+      color: #a59aaa;
+      font-size: 11px;
+    }
+
+    .sparkle {
+      position: fixed;
+
+      z-index: 20;
+      pointer-events: none;
+
+      animation: sparkleAnimation 1.3s ease forwards;
+    }
+
+    @keyframes sparkleAnimation {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(0);
+      }
+
+      35% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(1.6) translateY(-90px);
+      }
+    }
+
+    @keyframes shake {
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-5px);
+      }
+
+      75% {
+        transform: translateX(5px);
+      }
+    }
+
+    .shake {
+      animation: shake 0.3s ease;
+    }
+
+    @media (max-width: 380px) {
+      .card {
+        padding: 24px 16px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .option-button {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background-decoration">
+    <span>✨</span>
+    <span>🌸</span>
+    <span>🦋</span>
+    <span>⭐</span>
+  </div>
+
+  <main class="card">
+
+    <div class="badge">
+      Rare Person Verification
+    </div>
+
+    <div class="avatar" id="avatar">
+      🌷
+    </div>
+
+    <h1 id="mainTitle">
+      Create Your Profile
+    </h1>
+
+    <p class="subtitle" id="subtitle">
+      Enter your details carefully.<br>
+      Our system is extremely accurate.
+    </p>
+
+    <div id="profileForm">
+
+      <div class="form-group">
+        <label class="label" for="nameInput">
+          Your name
+        </label>
+
+        <input
+          type="text"
+          id="nameInput"
+          class="text-input"
+          placeholder="Enter your name"
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="form-group">
+        <span class="label">
+          Choose your category
+        </span>
+
+        <div class="option-grid">
+
+          <button
+            type="button"
+            class="option-button"
+            data-value="Male"
+          >
+            <span>👨</span>
+            Male
+          </button>
+
+          <button
+            type="button"
+            class="option-button"
+            data-value="Female"
+          >
+            <span>👩</span>
+            Female
+          </button>
+
+          <button
+            type="button"
+            class="option-button"
+            data-value="Angel"
+          >
+            <span>😇</span>
+            Angel
+          </button>
+
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="main-button"
+        id="verifyButton"
+      >
+        Verify My Profile ✨
+      </button>
+
+    </div>
+
+    <div class="progress-container" id="progressContainer">
+
+      <div class="progress-label">
+        <span>Verification progress</span>
+        <span id="progressText">0%</span>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+    </div>
+
+    <section class="question-box" id="questionBox">
+
+      <h2 id="questionTitle">
+        Are you sure?
+      </h2>
+
+      <p id="questionText">
+        Our system needs one more confirmation.
+      </p>
+
+      <div class="answer-area" id="answerArea">
+
+        <button
+          type="button"
+          class="answer-button"
+          id="yesButton"
+        >
+          Yes
+        </button>
+
+        <button
+          type="button"
+          class="answer-button secondary"
+          id="noButton"
+        >
+          No
+        </button>
+
+      </div>
+
+      <button
+        type="button"
+        class="answer-button final-button"
+        id="continueButton"
+      >
+        Go On ✨
+      </button>
+
+    </section>
+
+    <p class="footer">
+      Made with a little code and a lot of care.
+    </p>
+
+  </main>
+
+  <script>
+    const optionButtons =
+      document.querySelectorAll(".option-button");
+
+    const nameInput =
+      document.getElementById("nameInput");
+
+    const verifyButton =
+      document.getElementById("verifyButton");
+
+    const profileForm =
+      document.getElementById("profileForm");
+
+    const questionBox =
+      document.getElementById("questionBox");
+
+    const questionTitle =
+      document.getElementById("questionTitle");
+
+    const questionText =
+      document.getElementById("questionText");
+
+    const yesButton =
+      document.getElementById("yesButton");
+
+    const noButton =
+      document.getElementById("noButton");
+
+    const answerArea =
+      document.getElementById("answerArea");
+
+    const continueButton =
+      document.getElementById("continueButton");
+
+    const avatar =
+      document.getElementById("avatar");
+
+    const mainTitle =
+      document.getElementById("mainTitle");
+
+    const subtitle =
+      document.getElementById("subtitle");
+
+    const progressContainer =
+      document.getElementById("progressContainer");
+
+    const progressBar =
+      document.getElementById("progressBar");
+
+    const progressText =
+      document.getElementById("progressText");
+
+    let selectedCategory = "";
+    let enteredName = "";
+    let questionStep = 0;
+
+    optionButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+
+        optionButtons.forEach((item) => {
+          item.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+
+        selectedCategory = button.dataset.value;
+
+        if (selectedCategory === "Male") {
+          avatar.textContent = "👨";
+        }
+
+        if (selectedCategory === "Female") {
+          avatar.textContent = "🌷";
+        }
+
+        if (selectedCategory === "Angel") {
+          avatar.textContent = "😇";
+          createSparkles();
+        }
+      });
+    });
+
+    verifyButton.addEventListener("click", () => {
+      enteredName = nameInput.value.trim();
+
+      if (enteredName === "") {
+        nameInput.classList.add("shake");
+        nameInput.focus();
+
+        setTimeout(() => {
+          nameInput.classList.remove("shake");
+        }, 350);
+
+        return;
+      }
+
+      if (selectedCategory === "") {
+        document.querySelector(".option-grid")
+          .classList.add("shake");
+
+        setTimeout(() => {
+          document.querySelector(".option-grid")
+            .classList.remove("shake");
+        }, 350);
+
+        return;
+      }
+
+      profileForm.style.display = "none";
+      questionBox.style.display = "block";
+      progressContainer.style.display = "block";
+
+      questionStep = 0;
+
+      updateQuestion();
+
+      questionBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    });
+
+    yesButton.addEventListener("click", () => {
+      questionStep++;
+      updateQuestion();
+    });
+
+    noButton.addEventListener("click", () => {
+      questionStep++;
+      updateQuestion();
+    });
+
+    continueButton.addEventListener("click", () => {
+      showFinalScreen();
+    });
+
+    function updateQuestion() {
+
+      const questions = [
+        {
+          title: "Are you sure? 🤔",
+          text:
+            `${enteredName}, you selected ${selectedCategory}. ` +
+            "Would you like to confirm that choice?"
+        },
+
+        {
+          title: "Are you really sure? ✨",
+          text:
+            "Are you sure you are not an angel?"
+        },
+
+        {
+          title: "The system disagrees 🌸",
+          text:
+            "Our verification system thinks that Angel is a more specific and accurate category."
+        },
+
+        {
+          title: "One final check 🦋",
+          text:
+            "Do you possess kindness, grace, talent and the ability to make people smile?"
+        },
+
+        {
+          title: "Suspicious result detected 😇",
+          text:
+            "All your answers match the characteristics of an angel. Would you still like to deny it?"
+        }
+      ];
+
+      const progressValues = [15, 35, 55, 75, 92];
+
+      if (questionStep < questions.length) {
+
+        questionTitle.textContent =
+          questions[questionStep].title;
+
+        questionText.textContent =
+          questions[questionStep].text;
+
+        progressBar.style.width =
+          progressValues[questionStep] + "%";
+
+        progressText.textContent =
+          progressValues[questionStep] + "%";
+
+        answerArea.style.display = "grid";
+        continueButton.style.display = "none";
+
+        if (questionStep === 0) {
+          yesButton.textContent = "Yes, I’m sure";
+          noButton.textContent = "Let me check";
+        }
+
+        if (questionStep === 1) {
+          yesButton.textContent = "Yes, I’m not";
+          noButton.textContent = "Maybe I am";
+        }
+
+        if (questionStep === 2) {
+          yesButton.textContent = "The system is wrong";
+          noButton.textContent = "Fine, continue";
+        }
+
+        if (questionStep === 3) {
+          yesButton.textContent = "Yes";
+          noButton.textContent = "Maybe";
+        }
+
+        if (questionStep === 4) {
+          yesButton.textContent = "I still deny it";
+          noButton.textContent = "Okay, you win";
+        }
+
+      } else {
+        showAngelResult();
+      }
+    }
+
+    function showAngelResult() {
+
+      questionTitle.textContent =
+        "Verification complete 😇";
+
+      questionText.textContent =
+        `${enteredName}, you can no longer change the result. ` +
+        "You are definitely an angel. Your profile has been corrected automatically.";
+
+      progressBar.style.width = "100%";
+      progressText.textContent = "100%";
+
+      answerArea.style.display = "none";
+      continueButton.style.display = "block";
+
+      continueButton.textContent =
+        "You are definitely an angel — Go On ✨";
+
+      avatar.textContent = "😇";
+
+      createSparkles();
+      createSparkles();
+    }
+
+    function showFinalScreen() {
+
+    questionBox.style.display = "none";
+    progressContainer.style.display = "none";
+
+    mainTitle.textContent =
+        `Welcome, Angel ${enteredName} 😇`;
+
+    subtitle.innerHTML =
+        "Our verification system has completed the analysis.<br><br>" +
+        "<b>Result:</b> You are definitely an Angel.";
+
+    avatar.textContent = "😇";
+
+    createSparkles();
+    createSparkles();
+    createSparkles();
+
+    // Create Go On button
+    const button = document.createElement("button");
+
+    button.innerHTML = "✨ Go On ✨";
+
+    button.style.width = "100%";
+    button.style.marginTop = "30px";
+    button.style.padding = "16px";
+    button.style.border = "none";
+    button.style.borderRadius = "18px";
+    button.style.fontSize = "18px";
+    button.style.fontWeight = "bold";
+    button.style.cursor = "pointer";
+    button.style.background =
+        "linear-gradient(135deg,#c478d5,#8978dc)";
+    button.style.color = "white";
+    button.style.boxShadow =
+        "0 12px 25px rgba(140,110,195,.28)";
+
+    button.onclick = function () {
+        window.location.href = "page2.html";
+    };
+
+    document.querySelector(".card").appendChild(button);
+}
+
+    function createSparkles() {
+
+      const symbols = [
+        "✨",
+        "⭐",
+        "🌸",
+        "💫",
+        "🦋"
+      ];
+
+      for (let i = 0; i < 16; i++) {
+
+        const sparkle =
+          document.createElement("span");
+
+        sparkle.classList.add("sparkle");
+
+        sparkle.textContent =
+          symbols[
+            Math.floor(Math.random() * symbols.length)
+          ];
+
+        sparkle.style.left =
+          Math.random() * 100 + "vw";
+
+        sparkle.style.top =
+          35 + Math.random() * 50 + "vh";
+
+        sparkle.style.fontSize =
+          14 + Math.random() * 20 + "px";
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => {
+          sparkle.remove();
+        }, 1400);
+      }
+    }
+  </script>
+
+</body>
+</html>
