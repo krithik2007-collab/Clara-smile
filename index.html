@@ -8,7 +8,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Angel Verification</title>
+  <title>Profile Verification</title>
 
   <style>
     * {
@@ -19,58 +19,33 @@
 
     body {
       min-height: 100vh;
-
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
 
       background:
-        radial-gradient(
-          circle at top left,
-          #ffd9e9,
-          transparent 40%
-        ),
-        radial-gradient(
-          circle at bottom right,
-          #dcd4ff,
-          transparent 45%
-        ),
-        linear-gradient(
-          135deg,
-          #fff9fc,
-          #f5f1ff
-        );
+        radial-gradient(circle at top left, #ffd9e9, transparent 40%),
+        radial-gradient(circle at bottom right, #dcd4ff, transparent 45%),
+        linear-gradient(135deg, #fff9fc, #f5f1ff);
 
       display: flex;
       align-items: center;
       justify-content: center;
 
       padding: 20px;
-
       overflow-x: hidden;
     }
-
-    /* =========================================
-       BACKGROUND DECORATIONS
-    ========================================= */
 
     .background-decoration {
       position: fixed;
       inset: 0;
-
       overflow: hidden;
       pointer-events: none;
     }
 
     .background-decoration span {
       position: absolute;
-
-      opacity: 0.38;
-      font-size: 34px;
-
-      animation:
-        float 7s ease-in-out infinite;
+      opacity: 0.3;
+      font-size: 25px;
+      animation: float 7s ease-in-out infinite;
     }
 
     .background-decoration span:nth-child(1) {
@@ -81,42 +56,31 @@
     .background-decoration span:nth-child(2) {
       right: 9%;
       top: 18%;
-
       animation-delay: 1s;
     }
 
     .background-decoration span:nth-child(3) {
-      left: 10%;
-      bottom: 14%;
-
+      left: 12%;
+      bottom: 15%;
       animation-delay: 2s;
     }
 
     .background-decoration span:nth-child(4) {
       right: 8%;
       bottom: 12%;
-
       animation-delay: 3s;
     }
 
     @keyframes float {
       0%,
       100% {
-        transform:
-          translateY(0)
-          rotate(0deg);
+        transform: translateY(0) rotate(0deg);
       }
 
       50% {
-        transform:
-          translateY(-18px)
-          rotate(8deg);
+        transform: translateY(-18px) rotate(8deg);
       }
     }
-
-    /* =========================================
-       MAIN CARD
-    ========================================= */
 
     .card {
       width: 100%;
@@ -124,46 +88,31 @@
 
       padding: 28px 22px;
 
-      background:
-        rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(16px);
 
-      backdrop-filter:
-        blur(16px);
-
-      border:
-        1px solid
-        rgba(255, 255, 255, 0.92);
-
+      border: 1px solid rgba(255, 255, 255, 0.9);
       border-radius: 30px;
 
       box-shadow:
-        0 20px 50px
-        rgba(100, 70, 130, 0.16),
-        inset 0 1px 0
-        rgba(255, 255, 255, 0.9);
+        0 20px 50px rgba(100, 70, 130, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
       position: relative;
       z-index: 2;
 
-      animation:
-        cardAppear 0.7s ease;
+      animation: cardAppear 0.7s ease;
     }
 
     @keyframes cardAppear {
       from {
         opacity: 0;
-
-        transform:
-          translateY(20px)
-          scale(0.97);
+        transform: translateY(20px) scale(0.97);
       }
 
       to {
         opacity: 1;
-
-        transform:
-          translateY(0)
-          scale(1);
+        transform: translateY(0) scale(1);
       }
     }
 
@@ -181,7 +130,6 @@
       font-size: 11px;
       font-weight: bold;
       letter-spacing: 1px;
-
       text-transform: uppercase;
     }
 
@@ -193,12 +141,7 @@
 
       border-radius: 50%;
 
-      background:
-        linear-gradient(
-          135deg,
-          #ffcce1,
-          #cec5ff
-        );
+      background: linear-gradient(135deg, #ffcce1, #cec5ff);
 
       display: flex;
       align-items: center;
@@ -206,19 +149,16 @@
 
       font-size: 43px;
 
-      box-shadow:
-        0 12px 28px
-        rgba(170, 130, 200, 0.28);
+      box-shadow: 0 12px 28px rgba(170, 130, 200, 0.28);
 
       transition: 0.4s;
     }
 
     h1 {
       text-align: center;
-
       color: #392d47;
-      font-size: 27px;
 
+      font-size: 27px;
       margin-bottom: 9px;
     }
 
@@ -231,10 +171,6 @@
 
       margin-bottom: 26px;
     }
-
-    /* =========================================
-       PROFILE FORM
-    ========================================= */
 
     .form-group {
       margin-bottom: 22px;
@@ -255,10 +191,7 @@
 
       padding: 15px 16px;
 
-      border:
-        1px solid
-        #eadff1;
-
+      border: 1px solid #eadff1;
       border-radius: 16px;
 
       background: #fffafd;
@@ -272,17 +205,12 @@
 
     .text-input:focus {
       border-color: #c99ce3;
-
-      box-shadow:
-        0 0 0 4px
-        rgba(199, 156, 227, 0.15);
+      box-shadow: 0 0 0 4px rgba(199, 156, 227, 0.15);
     }
 
     .option-grid {
       display: grid;
-      grid-template-columns:
-        repeat(3, 1fr);
-
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
     }
 
@@ -291,10 +219,7 @@
 
       padding: 12px 7px;
 
-      border:
-        1px solid
-        #eadff1;
-
+      border: 1px solid #eadff1;
       border-radius: 16px;
 
       background: #fffafd;
@@ -320,36 +245,21 @@
     }
 
     .option-button:hover {
-      transform:
-        translateY(-3px);
-
-      border-color:
-        #d5afe9;
+      transform: translateY(-3px);
+      border-color: #d5afe9;
     }
 
     .option-button.selected {
-      background:
-        linear-gradient(
-          135deg,
-          #f7dcff,
-          #e8e1ff
-        );
+      background: linear-gradient(135deg, #f7dcff, #e8e1ff);
 
       border-color: #c98be9;
       color: #6b4082;
 
-      box-shadow:
-        0 8px 20px
-        rgba(174, 126, 203, 0.18);
+      box-shadow: 0 8px 20px rgba(174, 126, 203, 0.18);
     }
 
-    /* =========================================
-       BUTTONS
-    ========================================= */
-
     .main-button,
-    .answer-button,
-    .go-on-button {
+    .answer-button {
       width: 100%;
 
       border: none;
@@ -357,13 +267,7 @@
 
       padding: 16px;
 
-      background:
-        linear-gradient(
-          135deg,
-          #bd7cda,
-          #8c7bdb
-        );
-
+      background: linear-gradient(135deg, #bd7cda, #8c7bdb);
       color: white;
 
       font-size: 16px;
@@ -371,30 +275,76 @@
 
       cursor: pointer;
 
-      box-shadow:
-        0 12px 25px
-        rgba(142, 111, 194, 0.28);
+      box-shadow: 0 12px 25px rgba(142, 111, 194, 0.28);
 
       transition: 0.25s;
     }
 
     .main-button:hover,
-    .answer-button:hover,
-    .go-on-button:hover {
-      transform:
-        translateY(-2px);
+    .answer-button:hover {
+      transform: translateY(-2px);
     }
 
     .main-button:active,
-    .answer-button:active,
-    .go-on-button:active {
-      transform:
-        scale(0.98);
+    .answer-button:active {
+      transform: scale(0.98);
     }
 
-    /* =========================================
-       PROGRESS
-    ========================================= */
+    .question-box {
+      display: none;
+
+      margin-top: 20px;
+      padding: 20px;
+
+      border-radius: 20px;
+
+      background: linear-gradient(135deg, #fff0f7, #f0eaff);
+      border: 1px solid #ead8f4;
+
+      text-align: center;
+
+      animation: appear 0.45s ease;
+    }
+
+    .question-box h2 {
+      color: #65427e;
+
+      font-size: 20px;
+      line-height: 1.4;
+
+      margin-bottom: 9px;
+    }
+
+    .question-box p {
+      color: #7e6e88;
+
+      font-size: 14px;
+      line-height: 1.6;
+
+      margin-bottom: 18px;
+    }
+
+    .answer-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .answer-button.secondary {
+      background: #fffafd;
+      color: #755685;
+
+      border: 1px solid #dec7eb;
+      box-shadow: none;
+    }
+
+    .final-button {
+      display: none;
+
+      margin-top: 14px;
+
+      background: linear-gradient(135deg, #d26eb4, #8f79de);
+    }
 
     .progress-container {
       display: none;
@@ -427,216 +377,9 @@
 
       border-radius: 20px;
 
-      background:
-        linear-gradient(
-          90deg,
-          #de8fca,
-          #9882e1
-        );
+      background: linear-gradient(90deg, #de8fca, #9882e1);
 
-      transition:
-        width 0.5s ease;
-    }
-
-    /* =========================================
-       QUESTION BOX
-    ========================================= */
-
-    .question-box {
-      display: none;
-
-      margin-top: 20px;
-      padding: 20px;
-
-      border-radius: 20px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #fff0f7,
-          #f0eaff
-        );
-
-      border:
-        1px solid
-        #ead8f4;
-
-      text-align: center;
-
-      animation:
-        appear 0.45s ease;
-    }
-
-    .question-box h2 {
-      color: #65427e;
-
-      font-size: 20px;
-      line-height: 1.4;
-
-      margin-bottom: 9px;
-    }
-
-    .question-box p {
-      color: #7e6e88;
-
-      font-size: 14px;
-      line-height: 1.6;
-
-      margin-bottom: 18px;
-    }
-
-    .answer-area {
-      display: grid;
-      grid-template-columns:
-        1fr 1fr;
-
-      gap: 10px;
-    }
-
-    .answer-button.secondary {
-      background: #fffafd;
-      color: #755685;
-
-      border:
-        1px solid
-        #dec7eb;
-
-      box-shadow: none;
-    }
-
-    @keyframes appear {
-      from {
-        opacity: 0;
-
-        transform:
-          translateY(12px)
-          scale(0.97);
-      }
-
-      to {
-        opacity: 1;
-
-        transform:
-          translateY(0)
-          scale(1);
-      }
-    }
-
-    /* =========================================
-       FINAL PAGE-ONE SCREEN
-    ========================================= */
-
-    .final-screen {
-      display: none;
-
-      text-align: center;
-
-      animation:
-        appear 0.6s ease;
-    }
-
-    .final-screen h2 {
-      color: #65427e;
-
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .final-screen p {
-      color: #7d6d87;
-
-      font-size: 14px;
-      line-height: 1.7;
-
-      margin-bottom: 18px;
-    }
-
-    .final-result-box {
-      padding: 20px;
-
-      margin-bottom: 17px;
-
-      border-radius: 20px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #ffeaf4,
-          #eee9ff
-        );
-
-      border:
-        1px solid
-        #e5d2ed;
-    }
-
-    .final-result-box strong {
-      display: block;
-
-      color: #6b467f;
-      font-size: 21px;
-
-      margin-bottom: 7px;
-    }
-
-    /* =========================================
-       EFFECTS
-    ========================================= */
-
-    .sparkle {
-      position: fixed;
-
-      z-index: 20;
-      pointer-events: none;
-
-      animation:
-        sparkleAnimation
-        1.3s ease forwards;
-    }
-
-    @keyframes sparkleAnimation {
-      0% {
-        opacity: 0;
-
-        transform:
-          scale(0.3)
-          translateY(0);
-      }
-
-      35% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-
-        transform:
-          scale(1.6)
-          translateY(-90px);
-      }
-    }
-
-    @keyframes shake {
-      0%,
-      100% {
-        transform:
-          translateX(0);
-      }
-
-      25% {
-        transform:
-          translateX(-5px);
-      }
-
-      75% {
-        transform:
-          translateX(5px);
-      }
-    }
-
-    .shake {
-      animation:
-        shake 0.3s ease;
+      transition: width 0.5s ease;
     }
 
     .footer {
@@ -646,6 +389,50 @@
 
       color: #a59aaa;
       font-size: 11px;
+    }
+
+    .sparkle {
+      position: fixed;
+
+      z-index: 20;
+      pointer-events: none;
+
+      animation: sparkleAnimation 1.3s ease forwards;
+    }
+
+    @keyframes sparkleAnimation {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(0);
+      }
+
+      35% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(1.6) translateY(-90px);
+      }
+    }
+
+    @keyframes shake {
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-5px);
+      }
+
+      75% {
+        transform: translateX(5px);
+      }
+    }
+
+    .shake {
+      animation: shake 0.3s ease;
     }
 
     @media (max-width: 380px) {
@@ -679,10 +466,7 @@
       Rare Person Verification
     </div>
 
-    <div
-      class="avatar"
-      id="avatar"
-    >
+    <div class="avatar" id="avatar">
       🌷
     </div>
 
@@ -690,24 +474,15 @@
       Create Your Profile
     </h1>
 
-    <p
-      class="subtitle"
-      id="subtitle"
-    >
+    <p class="subtitle" id="subtitle">
       Enter your details carefully.<br>
       Our system is extremely accurate.
     </p>
 
-    <!-- PROFILE FORM -->
-
     <div id="profileForm">
 
       <div class="form-group">
-
-        <label
-          class="label"
-          for="nameInput"
-        >
+        <label class="label" for="nameInput">
           Your name
         </label>
 
@@ -718,11 +493,9 @@
           placeholder="Enter your name"
           autocomplete="off"
         >
-
       </div>
 
       <div class="form-group">
-
         <span class="label">
           Choose your category
         </span>
@@ -757,7 +530,6 @@
           </button>
 
         </div>
-
       </div>
 
       <button
@@ -770,37 +542,24 @@
 
     </div>
 
-    <!-- PROGRESS -->
-
     <div
       class="progress-container"
       id="progressContainer"
     >
 
       <div class="progress-label">
-
-        <span>
-          Verification progress
-        </span>
-
-        <span id="progressText">
-          0%
-        </span>
-
+        <span>Verification progress</span>
+        <span id="progressText">0%</span>
       </div>
 
       <div class="progress-track">
-
         <div
           class="progress-bar"
           id="progressBar"
         ></div>
-
       </div>
 
     </div>
-
-    <!-- QUESTIONS -->
 
     <section
       class="question-box"
@@ -811,7 +570,9 @@
         Are you sure?
       </h2>
 
-      <p id="questionText"></p>
+      <p id="questionText">
+        Our system needs one more confirmation.
+      </p>
 
       <div
         class="answer-area"
@@ -821,7 +582,7 @@
         <button
           type="button"
           class="answer-button"
-          id="firstAnswerButton"
+          id="yesButton"
         >
           Yes
         </button>
@@ -829,47 +590,19 @@
         <button
           type="button"
           class="answer-button secondary"
-          id="secondAnswerButton"
+          id="noButton"
         >
           No
         </button>
 
       </div>
 
-    </section>
-
-    <!-- FINAL SCREEN -->
-
-    <section
-      class="final-screen"
-      id="finalScreen"
-    >
-
-      <h2 id="finalTitle">
-        Verification Complete 😇
-      </h2>
-
-      <p id="finalText"></p>
-
-      <div class="final-result-box">
-
-        <strong>
-          Definitely an Angel
-        </strong>
-
-        <p>
-          Kindness, grace, talent and one warm heart
-          have all been successfully verified.
-        </p>
-
-      </div>
-
       <button
         type="button"
-        class="go-on-button"
-        id="goOnButton"
+        class="answer-button final-button"
+        id="continueButton"
       >
-        Continue Your Angel Journey ✨
+        Go On ✨
       </button>
 
     </section>
@@ -882,243 +615,149 @@
 
   <script>
     const optionButtons =
-      document.querySelectorAll(
-        ".option-button"
-      );
+      document.querySelectorAll(".option-button");
 
     const nameInput =
-      document.getElementById(
-        "nameInput"
-      );
+      document.getElementById("nameInput");
 
     const verifyButton =
-      document.getElementById(
-        "verifyButton"
-      );
+      document.getElementById("verifyButton");
 
     const profileForm =
-      document.getElementById(
-        "profileForm"
-      );
+      document.getElementById("profileForm");
 
     const questionBox =
-      document.getElementById(
-        "questionBox"
-      );
+      document.getElementById("questionBox");
 
     const questionTitle =
-      document.getElementById(
-        "questionTitle"
-      );
+      document.getElementById("questionTitle");
 
     const questionText =
-      document.getElementById(
-        "questionText"
-      );
+      document.getElementById("questionText");
 
-    const firstAnswerButton =
-      document.getElementById(
-        "firstAnswerButton"
-      );
+    const yesButton =
+      document.getElementById("yesButton");
 
-    const secondAnswerButton =
-      document.getElementById(
-        "secondAnswerButton"
-      );
+    const noButton =
+      document.getElementById("noButton");
+
+    const answerArea =
+      document.getElementById("answerArea");
+
+    const continueButton =
+      document.getElementById("continueButton");
 
     const avatar =
-      document.getElementById(
-        "avatar"
-      );
+      document.getElementById("avatar");
 
     const mainTitle =
-      document.getElementById(
-        "mainTitle"
-      );
+      document.getElementById("mainTitle");
 
     const subtitle =
-      document.getElementById(
-        "subtitle"
-      );
+      document.getElementById("subtitle");
 
     const progressContainer =
-      document.getElementById(
-        "progressContainer"
-      );
+      document.getElementById("progressContainer");
 
     const progressBar =
-      document.getElementById(
-        "progressBar"
-      );
+      document.getElementById("progressBar");
 
     const progressText =
-      document.getElementById(
-        "progressText"
-      );
-
-    const finalScreen =
-      document.getElementById(
-        "finalScreen"
-      );
-
-    const finalTitle =
-      document.getElementById(
-        "finalTitle"
-      );
-
-    const finalText =
-      document.getElementById(
-        "finalText"
-      );
-
-    const goOnButton =
-      document.getElementById(
-        "goOnButton"
-      );
+      document.getElementById("progressText");
 
     let selectedCategory = "";
     let enteredName = "";
     let questionStep = 0;
-
-    /*
-      Select Male, Female or Angel.
-    */
+    let goOnButtonCreated = false;
 
     optionButtons.forEach((button) => {
-      button.addEventListener(
-        "click",
-        () => {
-          optionButtons.forEach(
-            (item) => {
-              item.classList.remove(
-                "selected"
-              );
-            }
-          );
+      button.addEventListener("click", () => {
+        optionButtons.forEach((item) => {
+          item.classList.remove("selected");
+        });
 
-          button.classList.add(
-            "selected"
-          );
+        button.classList.add("selected");
 
-          selectedCategory =
-            button.dataset.value;
+        selectedCategory =
+          button.dataset.value;
 
-          if (
-            selectedCategory === "Male"
-          ) {
-            avatar.textContent = "👨";
-          }
-
-          if (
-            selectedCategory === "Female"
-          ) {
-            avatar.textContent = "🌷";
-          }
-
-          if (
-            selectedCategory === "Angel"
-          ) {
-            avatar.textContent = "😇";
-
-            createSparkles(15);
-          }
+        if (selectedCategory === "Male") {
+          avatar.textContent = "👨";
         }
-      );
+
+        if (selectedCategory === "Female") {
+          avatar.textContent = "🌷";
+        }
+
+        if (selectedCategory === "Angel") {
+          avatar.textContent = "😇";
+          createSparkles();
+        }
+      });
     });
 
-    /*
-      Start verification.
-    */
+    verifyButton.addEventListener("click", () => {
+      enteredName =
+        nameInput.value.trim();
 
-    verifyButton.addEventListener(
-      "click",
-      () => {
-        enteredName =
-          nameInput.value.trim();
+      if (enteredName === "") {
+        nameInput.classList.add("shake");
+        nameInput.focus();
 
-        if (enteredName === "") {
-          nameInput.classList.add(
-            "shake"
-          );
+        setTimeout(() => {
+          nameInput.classList.remove("shake");
+        }, 350);
 
-          nameInput.focus();
-
-          setTimeout(() => {
-            nameInput.classList.remove(
-              "shake"
-            );
-          }, 350);
-
-          return;
-        }
-
-        if (
-          selectedCategory === ""
-        ) {
-          const optionGrid =
-            document.querySelector(
-              ".option-grid"
-            );
-
-          optionGrid.classList.add(
-            "shake"
-          );
-
-          setTimeout(() => {
-            optionGrid.classList.remove(
-              "shake"
-            );
-          }, 350);
-
-          return;
-        }
-
-        profileForm.style.display =
-          "none";
-
-        questionBox.style.display =
-          "block";
-
-        progressContainer.style.display =
-          "block";
-
-        /*
-          If Angel was selected immediately,
-          skip the disagreement questions and
-          start at the final two checks.
-        */
-
-        if (
-          selectedCategory === "Angel"
-        ) {
-          questionStep = 3;
-        } else {
-          questionStep = 0;
-        }
-
-        showQuestion();
-
-        questionBox.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
+        return;
       }
-    );
 
-    /*
-      Displays the correct question and gives
-      each answer button its own action.
-    */
+      if (selectedCategory === "") {
+        const optionGrid =
+          document.querySelector(".option-grid");
 
-    function showQuestion() {
+        optionGrid.classList.add("shake");
+
+        setTimeout(() => {
+          optionGrid.classList.remove("shake");
+        }, 350);
+
+        return;
+      }
+
+      profileForm.style.display = "none";
+      questionBox.style.display = "block";
+      progressContainer.style.display = "block";
 
       /*
-        STEP 0
-        Only shown when Male or Female was selected.
+        If Angel is selected immediately,
+        skip straight to the final two steps.
+      */
+
+      if (selectedCategory === "Angel") {
+        questionStep = 3;
+      } else {
+        questionStep = 0;
+      }
+
+      updateQuestion();
+
+      questionBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    });
+
+    function updateQuestion() {
+      answerArea.style.display = "grid";
+      continueButton.style.display = "none";
+
+      /*
+        STEP 0:
+        Only shown for Male or Female.
       */
 
       if (questionStep === 0) {
-        setProgress(18);
+        setProgress(15);
 
         questionTitle.textContent =
           "Are you sure? 🤔";
@@ -1127,34 +766,31 @@
           `${enteredName}, you selected ${selectedCategory}. ` +
           "Would you like to confirm that choice?";
 
-        firstAnswerButton.textContent =
+        yesButton.textContent =
           "Yes, I’m sure";
 
-        secondAnswerButton.textContent =
-          "Let me reconsider";
+        noButton.textContent =
+          "Angel may fit better";
 
-        firstAnswerButton.onclick =
-          () => {
-            questionStep = 1;
-            showQuestion();
-          };
+        yesButton.onclick = () => {
+          questionStep = 1;
+          updateQuestion();
+        };
 
-        secondAnswerButton.onclick =
-          () => {
-            questionStep = 1;
-            showQuestion();
-          };
+        noButton.onclick = () => {
+          acceptAngel();
+        };
 
         return;
       }
 
       /*
-        STEP 1
-        She can accept being an angel here.
+        STEP 1:
+        She can admit she may be an Angel.
       */
 
       if (questionStep === 1) {
-        setProgress(38);
+        setProgress(35);
 
         questionTitle.textContent =
           "Are you really sure? ✨";
@@ -1162,251 +798,249 @@
         questionText.textContent =
           "Are you completely sure that you are not an angel?";
 
-        firstAnswerButton.textContent =
+        yesButton.textContent =
           "Yes, I’m not an angel";
 
-        secondAnswerButton.textContent =
-          "Actually, I might be an angel";
+        noButton.textContent =
+          "Actually, I may be an angel";
 
-        firstAnswerButton.onclick =
-          () => {
-            questionStep = 2;
-            showQuestion();
-          };
+        yesButton.onclick = () => {
+          questionStep = 2;
+          updateQuestion();
+        };
 
-        secondAnswerButton.onclick =
-          () => {
-            acceptAngel();
-          };
+        noButton.onclick = () => {
+          acceptAngel();
+        };
 
         return;
       }
 
       /*
-        STEP 2
-        System disagrees with Male/Female.
-        Choosing definitely Angel skips to step 3.
+        STEP 2:
+        The system disagrees.
       */
 
       if (questionStep === 2) {
-        setProgress(58);
+        setProgress(55);
 
         questionTitle.textContent =
           "The system disagrees 🌸";
 
         questionText.textContent =
-          "After examining the available evidence, " +
-          "the system believes that Angel is a much more specific category.";
+          "Our verification system believes that Angel is a more specific and accurate category.";
 
-        firstAnswerButton.textContent =
-          "I still disagree";
+        yesButton.textContent =
+          "The system is wrong";
 
-        secondAnswerButton.textContent =
+        noButton.textContent =
           "Okay, I am definitely an angel";
 
-        firstAnswerButton.onclick =
-          () => {
-            /*
-              Even after disagreement, continue
-              into the final verification checks.
-            */
+        yesButton.onclick = () => {
+          /*
+            Even if she disagrees, the system
+            continues to the final checks.
+          */
 
-            questionStep = 3;
-            showQuestion();
-          };
+          questionStep = 3;
+          updateQuestion();
+        };
 
-        secondAnswerButton.onclick =
-          () => {
-            acceptAngel();
-          };
+        noButton.onclick = () => {
+          acceptAngel();
+        };
 
         return;
       }
 
       /*
-        STEP 3
-        First of the final two checks.
+        STEP 3:
+        First of the final two steps.
       */
 
       if (questionStep === 3) {
-        setProgress(78);
+        setProgress(75);
 
         questionTitle.textContent =
           "Final Check One 🦋";
 
-        if (
-          selectedCategory === "Angel"
-        ) {
-          questionText.textContent =
-            "Excellent choice. Does your profile include kindness, grace, talent and the ability to make people smile?";
-        } else {
-          questionText.textContent =
-            "Do you possess kindness, grace, talent and the ability to make people smile?";
-        }
+        questionText.textContent =
+          "Do you possess kindness, grace, talent and the ability to make people smile?";
 
-        firstAnswerButton.textContent =
+        yesButton.textContent =
           "Yes ✨";
 
-        secondAnswerButton.textContent =
+        noButton.textContent =
           "That sounds like me";
 
-        firstAnswerButton.onclick =
-          () => {
-            questionStep = 4;
-            showQuestion();
-          };
+        yesButton.onclick = () => {
+          questionStep = 4;
+          updateQuestion();
+        };
 
-        secondAnswerButton.onclick =
-          () => {
-            questionStep = 4;
-            showQuestion();
-          };
+        noButton.onclick = () => {
+          questionStep = 4;
+          updateQuestion();
+        };
 
         return;
       }
 
       /*
-        STEP 4
-        Second and final check.
+        STEP 4:
+        Final confirmation.
       */
 
       if (questionStep === 4) {
-        setProgress(94);
+        setProgress(92);
 
         questionTitle.textContent =
           "Final Check Two 😇";
 
         questionText.textContent =
-          "The evidence matches perfectly. Would you like the system to officially confirm your Angel status?";
+          "Every result matches the official characteristics of an angel. Shall the system confirm it?";
 
-        firstAnswerButton.textContent =
+        yesButton.textContent =
           "Yes, confirm it";
 
-        secondAnswerButton.textContent =
+        noButton.textContent =
           "The system may continue";
 
-        firstAnswerButton.onclick =
-          () => {
-            showAngelResult();
-          };
+        yesButton.onclick = () => {
+          showAngelResult();
+        };
 
-        secondAnswerButton.onclick =
-          () => {
-            showAngelResult();
-          };
-
-        return;
+        noButton.onclick = () => {
+          showAngelResult();
+        };
       }
     }
 
     /*
-      Called whenever she says that she is
-      an Angel during the earlier process.
+      Whenever she accepts being an Angel,
+      skip directly to the final two steps.
     */
 
     function acceptAngel() {
       selectedCategory = "Angel";
-
       avatar.textContent = "😇";
-
-      /*
-        Skip directly to the final two checks.
-      */
 
       questionStep = 3;
 
-      createSparkles(18);
-
-      showQuestion();
+      createSparkles();
+      updateQuestion();
     }
-
-    /*
-      Update the progress bar.
-    */
 
     function setProgress(value) {
       progressBar.style.width =
-        `${value}%`;
+        value + "%";
 
       progressText.textContent =
-        `${value}%`;
+        value + "%";
     }
-
-    /*
-      Show the verification result.
-    */
 
     function showAngelResult() {
-      questionBox.style.display =
-        "none";
+      questionTitle.textContent =
+        "Verification complete 😇";
 
-      setProgress(100);
+      questionText.textContent =
+        `${enteredName}, you can no longer change the result. ` +
+        "You are definitely an angel. Your profile has been verified successfully.";
 
-      setTimeout(() => {
-        progressContainer.style.display =
-          "none";
+      progressBar.style.width = "100%";
+      progressText.textContent = "100%";
 
-        finalScreen.style.display =
-          "block";
+      answerArea.style.display = "none";
+      continueButton.style.display = "block";
 
-        avatar.textContent = "😇";
+      continueButton.textContent =
+        "You are definitely an angel — Continue ✨";
 
-        mainTitle.textContent =
-          `Welcome, Angel ${enteredName} ✨`;
+      avatar.textContent = "😇";
 
-        subtitle.innerHTML =
-          "The verification process is officially complete.<br>" +
-          "The result cannot be changed.";
-
-        finalTitle.textContent =
-          "Verification Complete 😇";
-
-        finalText.textContent =
-          `${enteredName}, every answer has been examined carefully. ` +
-          "Your profile has been officially registered under the Angel category.";
-
-        createSparkles(35);
-      }, 450);
+      createSparkles();
+      createSparkles();
     }
 
-    /*
-      Go to Page 2.
-    */
+    continueButton.addEventListener("click", () => {
+      showFinalScreen();
+    });
 
-    goOnButton.addEventListener(
-      "click",
-      () => {
+    function showFinalScreen() {
+      questionBox.style.display = "none";
+      progressContainer.style.display = "none";
+
+      mainTitle.textContent =
+        `Welcome, Angel ${enteredName} 😇`;
+
+      subtitle.innerHTML =
+        "Our verification system has completed the analysis.<br><br>" +
+        "<b>Result:</b> You are definitely an Angel.";
+
+      avatar.textContent = "😇";
+
+      createSparkles();
+      createSparkles();
+      createSparkles();
+
+      /*
+        Prevents multiple Go On buttons from
+        being created if the function runs twice.
+      */
+
+      if (goOnButtonCreated) {
+        return;
+      }
+
+      goOnButtonCreated = true;
+
+      const button =
+        document.createElement("button");
+
+      button.innerHTML =
+        "✨ Go On ✨";
+
+      button.style.width = "100%";
+      button.style.marginTop = "30px";
+      button.style.padding = "16px";
+      button.style.border = "none";
+      button.style.borderRadius = "18px";
+      button.style.fontSize = "18px";
+      button.style.fontWeight = "bold";
+      button.style.cursor = "pointer";
+
+      button.style.background =
+        "linear-gradient(135deg,#c478d5,#8978dc)";
+
+      button.style.color = "white";
+
+      button.style.boxShadow =
+        "0 12px 25px rgba(140,110,195,.28)";
+
+      button.onclick = function () {
         window.location.href =
           "page2.html";
-      }
-    );
+      };
 
-    /*
-      Sparkle animation.
-    */
+      document
+        .querySelector(".card")
+        .appendChild(button);
+    }
 
-    function createSparkles(amount) {
+    function createSparkles() {
       const symbols = [
         "✨",
         "⭐",
         "🌸",
         "💫",
-        "🦋",
-        "🌙"
+        "🦋"
       ];
 
-      for (
-        let i = 0;
-        i < amount;
-        i++
-      ) {
+      for (let i = 0; i < 16; i++) {
         const sparkle =
-          document.createElement(
-            "span"
-          );
+          document.createElement("span");
 
-        sparkle.className =
-          "sparkle";
+        sparkle.classList.add("sparkle");
 
         sparkle.textContent =
           symbols[
@@ -1417,20 +1051,16 @@
           ];
 
         sparkle.style.left =
-          Math.random() *
-          100 +
-          "vw";
+          Math.random() * 100 + "vw";
 
         sparkle.style.top =
           35 +
-          Math.random() *
-          50 +
+          Math.random() * 50 +
           "vh";
 
         sparkle.style.fontSize =
           14 +
-          Math.random() *
-          20 +
+          Math.random() * 20 +
           "px";
 
         document.body.appendChild(
