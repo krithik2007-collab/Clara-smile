@@ -892,6 +892,151 @@
       createSparkles(12);
     }, 650);
   </script>
+<audio id="backgroundMusic" preload="auto">
+  <source src="background-music.mp3" type="audio/mpeg">
+</audio>
 
+<button id="musicButton" type="button">
+  🎵 Start Music
+</button>
+
+<style>
+  #musicButton {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 9999;
+
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 50px;
+
+    padding: 11px 15px;
+
+    background: rgba(93, 65, 117, 0.9);
+    color: white;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    box-shadow: 0 8px 22px rgba(70, 45, 90, 0.25);
+    backdrop-filter: blur(10px);
+
+    cursor: pointer;
+  }
+
+  #musicButton:active {
+    transform: scale(0.96);
+  }
+</style>
+
+<script>
+  const backgroundMusic =
+    document.getElementById("backgroundMusic");
+
+  const musicButton =
+    document.getElementById("musicButton");
+
+  const savedTime =
+    Number(sessionStorage.getItem("musicTime")) || 0;
+
+  const musicStarted =
+    sessionStorage.getItem("musicStarted") === "true";
+
+  backgroundMusic.volume = 0.32;
+
+  /*
+    Resume from the saved position whenever
+    another page opens in the same tab.
+  */
+  backgroundMusic.addEventListener("loadedmetadata", () => {
+    if (
+      savedTime >= 0 &&
+      savedTime < backgroundMusic.duration
+    ) {
+      backgroundMusic.currentTime = savedTime;
+    }
+
+    if (musicStarted) {
+      attemptToResumeMusic();
+    }
+  });
+
+  /*
+    Save the position throughout navigation.
+    sessionStorage disappears when the tab closes.
+  */
+  setInterval(() => {
+    if (!backgroundMusic.paused) {
+      sessionStorage.setItem(
+        "musicTime",
+        backgroundMusic.currentTime
+      );
+    }
+  }, 500);
+
+  window.addEventListener("pagehide", () => {
+    sessionStorage.setItem(
+      "musicTime",
+      backgroundMusic.currentTime
+    );
+  });
+
+  /*
+    Repeat the song after its fade-out.
+  */
+  backgroundMusic.addEventListener("ended", () => {
+    backgroundMusic.currentTime = 0;
+    sessionStorage.setItem("musicTime", "0");
+
+    backgroundMusic.play().catch(() => {
+      musicButton.style.display = "block";
+      musicButton.textContent = "🎵 Resume Music";
+    });
+  });
+
+  /*
+    The first click is necessary because Chrome
+    blocks sound from starting automatically.
+  */
+  musicButton.addEventListener("click", async () => {
+    try {
+      if (backgroundMusic.paused) {
+        await backgroundMusic.play();
+
+        sessionStorage.setItem(
+          "musicStarted",
+          "true"
+        );
+
+        musicButton.textContent = "🔇 Pause Music";
+      } else {
+        backgroundMusic.pause();
+
+        sessionStorage.setItem(
+          "musicStarted",
+          "false"
+        );
+
+        musicButton.textContent = "🎵 Resume Music";
+      }
+    } catch (error) {
+      console.error("Music could not start:", error);
+    }
+  });
+
+  async function attemptToResumeMusic() {
+    try {
+      await backgroundMusic.play();
+      musicButton.textContent = "🔇 Pause Music";
+    } catch (error) {
+      /*
+        Some phones may request one extra tap
+        after navigating to another page.
+      */
+      musicButton.style.display = "block";
+      musicButton.textContent = "🎵 Resume Music";
+    }
+  }
+</script>
 </body>
 </html>
